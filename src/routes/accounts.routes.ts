@@ -19,7 +19,6 @@ accountsRouter.get('/', async (request, response) => {
 accountsRouter.post('/', async (request, response) => {
   const { name } = request.body;
   const accountsRepository = getCustomRepository(AccountsRepository);
-  const createDynamicLink = new CreateDynamicLinkService();
 
   const slug = kebabCase(name);
   
