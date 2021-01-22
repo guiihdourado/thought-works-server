@@ -1,0 +1,11 @@
+{
+  "type": "mongodb",
+  "url": "mongodb+srv://admin:admin@cluster0.q9lux.mongodb.net/thoughtworks?retryWrites=true&w=majority",
+  "useNewUrlParser": true,
+  "synchronize": true,
+  "logging": true,
+  "useUnifiedTopology": true,
+  "entities": [
+    "./src/schemas/*.ts"
+  ]
+}
