@@ -11,7 +11,7 @@ class CreateDynamicLinkService {
         "domainUriPrefix": "https://testthoughtworks.page.link",
         "link": `http://amagpieinthesky.com/${name}`,
         "androidInfo": {
-          "androidPackageName": "com.mobilethoughtworks"
+          "androidPackageName": "com.thoughtworksmobilev2"
         },
       }
     }, {
