@@ -4,8 +4,6 @@ import { getCustomRepository } from 'typeorm';
 
 import AccountsRepository from '../repositories/AccountsRepository';
 
-import CreateDynamicLinkService from '../services/CreateDynamicLinkService';
-
 const accountsRouter = Router();
 
 accountsRouter.get('/', async (request, response) => {
@@ -13,7 +11,9 @@ accountsRouter.get('/', async (request, response) => {
   
   const accounts = await accountsRepository.find();
 
-  return response.json(accounts);
+  const filterAccounts = accounts.filter(account => account.firebase_link !== undefined);
+
+  return response.json(filterAccounts);
 });
 
 accountsRouter.post('/', async (request, response) => {

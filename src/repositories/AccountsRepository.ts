@@ -9,11 +9,21 @@ interface CreateData {
 @EntityRepository(Account)
 class AccountsRepository extends Repository<Account> {
   public async createAndSave(data: CreateData): Promise<Account | null> {
-    const account = this.create(data);
+    const account = await this.findOne({
+      where: {
+        slug: data.slug,
+      }
+    });
 
-    await this.save(account);
+    if (account) {
+      return account;
+    }
 
-    return account;
+    const createAccount = this.create(data);
+
+    await this.save(createAccount);
+
+    return createAccount;
   }
 }
 

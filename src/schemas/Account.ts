@@ -10,6 +10,9 @@ class Account {
 
   @Column()
   slug: string;
+
+  @Column()
+  firebase_link: string;
   
   @CreateDateColumn()
   created_at: Date;

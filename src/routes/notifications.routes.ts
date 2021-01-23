@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as admin from 'firebase-admin';
+import admin from 'firebase-admin';
 
 import firebaseEnv from '../../firebase-env.json';
 
@@ -9,7 +9,7 @@ notificationsRouter.post('/', async (request, response) => {
   const { name } = request.body;
 
   admin.initializeApp({
-    credential: admin.credential.cert(firebaseEnv)
+    credential: admin.credential.cert(firebaseEnv),
   });
 
   const message = {
@@ -20,17 +20,19 @@ notificationsRouter.post('/', async (request, response) => {
     topic: 'thoughtworks',
   };
   
-  await admin
+  admin
     .messaging()
     .send(message)
     .then(responseMessage => {
-      console.log('Successfully sent message:', responseMessage);
+      admin.app().delete();
       return response.status(201).json({ notification: 'OK' });
     })
     .catch(error => {
-      console.log('Error sending message:', error);
+      admin.app().delete();
       return response.json(error);
     });
+
+  
 });
 
 export default notificationsRouter;
