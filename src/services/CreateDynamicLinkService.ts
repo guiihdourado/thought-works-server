@@ -13,6 +13,9 @@ class CreateDynamicLinkService {
         "androidInfo": {
           "androidPackageName": "com.thoughtworksmobilev2"
         },
+        "iosInfo": {
+          "iosBundleId": "com.firebasetestapp"
+        }
       }
     }, {
       headers: {
